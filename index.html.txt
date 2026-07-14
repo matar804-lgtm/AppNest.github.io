@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استوديو AppNest | محمد مطر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981; /* لون أخضر يناسب التطبيقات الإسلامية */
+            --secondary: #065f46;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: var(--bg); 
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .header { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; 
+            padding: 60px 20px; 
+            text-align: center; 
+        }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .header p { margin-top: 10px; font-size: 1.2rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .apps { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+        .app-card { 
+            background: white; 
+            border-radius: 16px; 
+            padding: 25px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .app-card h3 { margin-top: 0; color: var(--secondary); }
+        .features { list-style: none; padding: 0; margin: 15px 0; }
+        .features li { margin-bottom: 8px; padding-right: 20px; position: relative; font-size: 0.95rem; }
+        .features li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .btn { 
+            display: inline-block;
+            background: var(--primary); 
+            color: white; 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--secondary); }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 استوديو AppNest</h1>
+        <p>تطبيقات إسلامية مفيدة | تطوير: محمد مطر</p>
+    </div>
+    
+    <div class="container">
+        <div class="apps">
+            <!-- بطاقة تطبيق التسبيح -->
+            <div class="app-card">
+                <h3>📿 تطبيق Tasbih App</h3>
+                <p>تطبيق إسلامي شامل لمساعدتك على الذكر والدعاء وتنظيم عبادتك اليومية بتصميم عصري وسلس.</p>
+                <ul class="features">
+                    <li>عداد تسبيح ذكي وسهل الاستخدام</li>
+                    <li>مجموعة من 100 دعاء للأمنيات</li>
+                    <li>أذكار الصباح والمساء ومناسبات مختلفة</li>
+                    <li>بوصلة قبلة دقيقة</li>
+                    <li>خلفيات إسلامية و 5 تصاميم للمسبحة مع 8 ألوان</li>
+                    <li>نظام إنجازات لتحفيزك على الاستمرار</li>
+                </ul>
+                <a href="#" class="btn">تحميل التطبيق (قريباً)</a>
+            </div>
+
+            <!-- يمكنك نسخ ولصق div الخاص بـ app-card لإضافة تطبيقات مستقبلية هنا -->
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 استوديو AppNest. جميع الحقوق محفوظة.</p>
+        <p>تواصل معنا: your.email@appnest.studio</p>
+    </div>
+</body>
+</html>
