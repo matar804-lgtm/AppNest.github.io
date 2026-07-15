@@ -1,336 +1,265 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استوديو AppNest | محمد مطر</title>
-    <meta name="description" content="استوديو AppNest لتطوير التطبيقات الإسلامية المفيدة - تطبيق Tasbih App">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #10b981;
-            --primary-dark: #065f46;
-            --accent: #f59e0b;
-            --bg: #f8fafc;
-            --text: #1e293b;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Cairo', sans-serif; 
-            background: var(--bg); 
-            color: var(--text);
-            line-height: 1.7;
-        }
-        
-        /* الهيدر */
-        .header { 
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
-            color: white; 
-            padding: 80px 20px; 
-            text-align: center; 
-            position: relative;
-            overflow: hidden;
-        }
-        .header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .header h1 { 
-            margin: 0; 
-            font-size: 3rem; 
-            font-weight: 900;
-            position: relative;
-            z-index: 1;
-        }
-        .header p { 
-            margin-top: 15px; 
-            font-size: 1.3rem; 
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-        .header .subtitle {
-            font-size: 1rem;
-            margin-top: 10px;
-            opacity: 0.85;
-        }
-        
-        /* الحاوية */
-        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
-        
-        /* قسم "عن الاستوديو" */
-        .about {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-        }
-        .about h2 {
-            color: var(--primary-dark);
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        .about p {
-            font-size: 1.1rem;
-            color: #475569;
-        }
-        
-        /* شبكة التطبيقات */
-        .apps { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-            margin-bottom: 50px;
-        }
-        .app-card { 
-            background: white; 
-            border-radius: 20px; 
-            padding: 30px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-        .app-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
-        }
-        .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-        .app-card h3 { 
-            margin-top: 0; 
-            color: var(--primary-dark); 
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .app-card > p {
-            color: #64748b;
-            margin-bottom: 20px;
-        }
-        
-        /* صورة التطبيق */
-        .app-image {
-            width: 100%;
-            max-width: 280px;
-            border-radius: 15px;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-        .app-image:hover {
-            transform: scale(1.03);
-        }
-        
-        /* قائمة الميزات */
-        .features { 
-            list-style: none; 
-            padding: 0; 
-            margin: 20px 0; 
-        }
-        .features li { 
-            margin-bottom: 10px; 
-            padding-right: 30px; 
-            position: relative; 
-            font-size: 1rem;
-            color: #334155;
-        }
-        .features li::before {
-            content: "✓";
-            position: absolute;
-            right: 0;
-            color: white;
-            background: var(--primary);
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        /* الأزرار */
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .btn { 
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px; 
-            border-radius: 10px; 
-            text-decoration: none; 
-            font-weight: 700;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            flex: 1;
-            justify-content: center;
-            min-width: 150px;
-        }
-        .btn-primary { 
-            background: var(--primary); 
-            color: white; 
-        }
-        .btn-primary:hover { 
-            background: var(--primary-dark); 
-            transform: translateY(-2px);
-        }
-        
-        /* قسم التواصل */
-        .contact-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-        }
-        .contact-section h2 {
-            color: var(--primary-dark);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .contact-section p {
-            color: #64748b;
-            margin-bottom: 25px;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        .social-link.github { background: #24292e; }
-        .social-link.email { background: #EA4335; }
-        .social-link.linkedin { background: #0A66C2; }
-        .social-link.twitter { background: #1DA1F2; }
-        
-        /* الفوتر */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #64748b;
-            font-size: 0.95rem;
-            border-top: 2px solid #e2e8f0;
-            background: white;
-        }
-        .footer strong {
-            color: var(--primary-dark);
-        }
-        
-        /* التجاوب مع الشاشات الصغيرة */
-        @media (max-width: 600px) {
-            .header h1 { font-size: 2rem; }
-            .header p { font-size: 1.1rem; }
-            .about h2 { font-size: 1.5rem; }
-            .btn { width: 100%; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="استوديو AppNest - تطبيقات إسلامية مفيدة تجمع بين الفائدة والتصميم العصري" />
+  <meta name="keywords" content="تطبيق إسلامي, تسبيح, أذكار, قبلة, AppNest" />
+  <meta name="author" content="محمد مطر" />
+  
+  <title>🚀 AppNest Studio | تطبيقات إسلامية مفيدة</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AppNest Studio - تطبيقات إسلامية" />
+  <meta property="og:description" content="تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- الهيدر -->
-    <div class="header">
-        <h1>🚀 استوديو AppNest</h1>
-        <p>تطبيقات إسلامية مفيدة</p>
-        <p class="subtitle">تطوير: محمد مطر</p>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i class="fas fa-mosque"></i>
+        <span>AppNest</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#features">المميزات</a></li>
+        <li><a href="#download">التحميل</a></li>
+        <li><a href="#contact">تواصل</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
-    
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i>
+        <span>تطبيقات إسلامية مفيدة</span>
+      </div>
+      <h1 class="hero-title">
+        استوديو <span class="gradient-text">AppNest</span>
+      </h1>
+      <p class="hero-subtitle">
+        نطور تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري،
+        <br />لمساعدتك في عبادتك اليومية وتقريبك من الله
+      </p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary">
+          <i class="fas fa-download"></i>
+          تحميل التطبيق
+        </a>
+        <a href="#features" class="btn btn-outline">
+          <i class="fas fa-info-circle"></i>
+          اكتشف المزيد
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <i class="fas fa-users"></i>
+          <span>+10K</span>
+          <small>مستخدم</small>
+        </div>
+        <div class="stat">
+          <i class="fas fa-star"></i>
+          <span>4.9</span>
+          <small>تقييم</small>
+        </div>
+        <div class="stat">
+          <i class="fas fa-heart"></i>
+          <span>100%</span>
+          <small>مجاني</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
     <div class="container">
-        <!-- قسم عن الاستوديو -->
-        <div class="about">
-            <h2>✨ مرحباً بك في استوديو AppNest</h2>
-            <p>نطور تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري، لمساعدتك في عبادتك اليومية وتقريبك من الله.</p>
+      <div class="section-header">
+        <span class="section-tag">المميزات</span>
+        <h2>تطبيق <span class="gradient-text">Tasbih</span> الشامل</h2>
+        <p>كل ما تحتاجه لعبادتك اليومية في تطبيق واحد</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-circle-notch"></i>
+          </div>
+          <h3>عداد تسبيح ذكي</h3>
+          <p>عداد سهل الاستخدام مع اهتزاز وصوت عند كل ضغطة</p>
         </div>
-        
-        <!-- بطاقة التطبيق -->
-        <div class="apps">
-            <div class="app-card">
-                <h3>📿 تطبيق Tasbih App</h3>
-                <p>تطبيق إسلامي شامل لمساعدتك على الذكر والدعاء وتنظيم عبادتك اليومية بتصميم عصري وسلس.</p>
-                
-                <!-- ⚠️ صورة التطبيق - ستظهر تلقائياً عندما ترفع صورة باسم tasbih-screenshot.png إلى المستودع -->
-                <!-- إذا لم ترفع صورة بعد، هذا السطر لن يسبب أي مشكلة وسيختفي تلقائياً -->
-                <img src="tasbih-screenshot.png" alt="واجهة تطبيق Tasbih App" class="app-image" onerror="this.style.display='none'">
-                
-                <ul class="features">
-                    <li>عداد تسبيح ذكي وسهل الاستخدام</li>
-                    <li>مجموعة من 100 دعاء للأمنيات</li>
-                    <li>أذكار الصباح والمساء ومناسبات مختلفة</li>
-                    <li>بوصلة قبلة دقيقة</li>
-                    <li>خلفيات إسلامية و 5 تصاميم للمسبحة مع 8 ألوان</li>
-                    <li>نظام إنجازات لتحفيزك على الاستمرار</li>
-                </ul>
-                
-                <div class="btn-group">
-                    <!-- ⚠️ غيّر # إلى رابط التحميل الفعلي عند توفره -->
-                    <a href="#" class="btn btn-primary">
-                        <i class="fas fa-download"></i>
-                        تحميل التطبيق
-                    </a>
-                </div>
-            </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hands-praying"></i>
+          </div>
+          <h3>100 دعاء للأمنيات</h3>
+          <p>مجموعة مختارة من الأدعية الصحيحة من الكتاب والسنة</p>
         </div>
-        
-        <!-- قسم التواصل -->
-        <div class="contact-section">
-            <h2>📬 تواصل معنا</h2>
-            <p>نسعد بتواصلك معنا للاستفسارات والاقتراحات</p>
-            <div class="social-links">
-                <!-- رابط حسابك على GitHub -->
-                <a href="https://github.com/matar804-lgtm" class="social-link github" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <!-- البريد الإلكتروني -->
-                <a href="mailto:mohammed.matar@appnest.studio" class="social-link email" title="البريد الإلكتروني">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-sun"></i>
+          </div>
+          <h3>أذكار الصباح والمساء</h3>
+          <p>أذكار كاملة مع تنبيهات يومية لا تفوتك أبداً</p>
         </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-compass"></i>
+          </div>
+          <h3>بوصلة قبلة دقيقة</h3>
+          <p>تحديد اتجاه القبلة بدقة عالية باستخدام GPS</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>5 تصاميم و 8 ألوان</h3>
+          <p>خصص المسبحة حسب ذوقك مع خلفيات إسلامية جميلة</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3>نظام إنجازات</h3>
+          <p>تحفيز مستمر عبر إنجازات تحفزك على المواظبة</p>
+        </div>
+      </div>
     </div>
-    
-    <!-- الفوتر -->
-    <div class="footer">
-        <p>© 2026 <strong>استوديو AppNest</strong>. جميع الحقوق محفوظة.</p>
-        <p>📧 mohammed.matar@appnest.studio</p>
+  </section>
+
+  <!-- Live Tasbih Demo -->
+  <section class="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">جرب الآن</span>
+        <h2>عداد تسبيح <span class="gradient-text">تفاعلي</span></h2>
+      </div>
+
+      <div class="tasbih-demo">
+        <div class="tasbih-display">
+          <div class="tasbih-count" id="count">0</div>
+          <div class="tasbih-target">الهدف: <span id="target">33</span></div>
+        </div>
+        <button class="tasbih-btn" id="tasbihBtn">
+          <i class="fas fa-hand-pointer"></i>
+          <span>اضغط للتسبيح</span>
+        </button>
+        <div class="tasbih-controls">
+          <button class="control-btn" id="resetBtn">
+            <i class="fas fa-redo"></i> إعادة
+          </button>
+          <button class="control-btn" id="targetBtn">
+            <i class="fas fa-bullseye"></i> تغيير الهدف
+          </button>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="download-card">
+        <div class="download-content">
+          <h2>حمّل التطبيق الآن</h2>
+          <p>متاح مجاناً على جميع المتاجر</p>
+          <div class="download-buttons">
+            <a href="#" class="store-btn">
+              <i class="fab fa-google-play"></i>
+              <div>
+                <small>GET IT ON</small>
+                <strong>Google Play</strong>
+              </div>
+            </a>
+            <a href="#" class="store-btn">
+              <i class="fab fa-apple"></i>
+              <div>
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">تواصل معنا</span>
+        <h2>نسعد <span class="gradient-text">بتواصلك</span></h2>
+        <p>للاستفسارات والاقتراحات والملاحظات</p>
+      </div>
+
+      <div class="contact-grid">
+        <a href="mailto:mohammed.matar@appnest.studio" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>البريد الإلكتروني</h3>
+          <p>mohammed.matar@appnest.studio</p>
+        </a>
+        <a href="https://github.com/appnest-studio" class="contact-card" target="_blank">
+          <i class="fab fa-github"></i>
+          <h3>GitHub</h3>
+          <p>المستودع الرسمي</p>
+        </a>
+        <a href="#" class="contact-card">
+          <i class="fab fa-telegram"></i>
+          <h3>Telegram</h3>
+          <p>قناة التحديثات</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <i class="fas fa-mosque"></i>
+          <span>AppNest Studio</span>
+        </div>
+        <p class="footer-copy">
+          © 2026 استوديو AppNest. جميع الحقوق محفوظة.
+          <br />
+          <small>تطوير: <strong>محمد مطر</strong></small>
+        </p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
