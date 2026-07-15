@@ -1,94 +1,330 @@
-<!DOCTYPE html>
+matar804-lgtm
+matar804-lgtm.github.io
+Repository navigation
+Code
+Issues
+Pull requests
+Agents
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+Files
+Go to file
+t
+T
+README.md
+index.html
+matar804-lgtm.github.io
+/index.html
+matar804-lgtm
+matar804-lgtm
+إزالة عناصر الواتساب
+9b6cf1f
+ · 
+1 minute ago
+matar804-lgtm.github.io
+/index.html
+
+Code
+
+Blame
+336 lines (319 loc) · 11.6 KB
+<!DOCTYPE html> 
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استوديو AppNest | محمد مطر</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="استوديو AppNest لتطوير التطبيقات الإسلامية المفيدة - تطبيق Tasbih App">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #10b981; /* لون أخضر يناسب التطبيقات الإسلامية */
-            --secondary: #065f46;
+            --primary: #10b981;
+            --primary-dark: #065f46;
+            --accent: #f59e0b;
             --bg: #f8fafc;
             --text: #1e293b;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Cairo', sans-serif; 
             background: var(--bg); 
             color: var(--text);
-            margin: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
+        
+        /* الهيدر */
         .header { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
             color: white; 
-            padding: 60px 20px; 
+            padding: 80px 20px; 
             text-align: center; 
+            position: relative;
+            overflow: hidden;
         }
-        .header h1 { margin: 0; font-size: 2.5rem; }
-        .header p { margin-top: 10px; font-size: 1.2rem; opacity: 0.9; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+        .header p { 
+            margin-top: 15px; 
+            font-size: 1.3rem; 
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        .header .subtitle {
+            font-size: 1rem;
+            margin-top: 10px;
+            opacity: 0.85;
+        }
+        
+        /* الحاوية */
+        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        
+        /* قسم "عن الاستوديو" */
+        .about {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        .about h2 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .about p {
+            font-size: 1.1rem;
+            color: #475569;
+        }
+        
+        /* شبكة التطبيقات */
         .apps { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 25px; 
+            gap: 30px; 
+            margin-bottom: 50px;
         }
         .app-card { 
             background: white; 
-            border-radius: 16px; 
-            padding: 25px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--primary);
+            border-radius: 20px; 
+            padding: 30px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .app-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
         }
         .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
         }
-        .app-card h3 { margin-top: 0; color: var(--secondary); }
-        .features { list-style: none; padding: 0; margin: 15px 0; }
-        .features li { margin-bottom: 8px; padding-right: 20px; position: relative; font-size: 0.95rem; }
+        .app-card h3 { 
+            margin-top: 0; 
+            color: var(--primary-dark); 
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .app-card > p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        /* صورة التطبيق */
+        .app-image {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .app-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* قائمة الميزات */
+        .features { 
+            list-style: none; 
+            padding: 0; 
+            margin: 20px 0; 
+        }
+        .features li { 
+            margin-bottom: 10px; 
+            padding-right: 30px; 
+            position: relative; 
+            font-size: 1rem;
+            color: #334155;
+        }
         .features li::before {
             content: "✓";
             position: absolute;
             right: 0;
-            color: var(--primary);
+            color: white;
+            background: var(--primary);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
             font-weight: bold;
         }
+        
+        /* الأزرار */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
         .btn { 
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            flex: 1;
+            justify-content: center;
+            min-width: 150px;
+        }
+        .btn-primary { 
             background: var(--primary); 
             color: white; 
-            padding: 12px 24px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: 600;
-            transition: background 0.3s ease;
-            margin-top: 10px;
         }
-        .btn:hover { background: var(--secondary); }
+        .btn-primary:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-2px);
+        }
+        
+        /* قسم التواصل */
+        .contact-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        .contact-section h2 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .contact-section p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .social-link.github { background: #24292e; }
+        .social-link.email { background: #EA4335; }
+        .social-link.linkedin { background: #0A66C2; }
+        .social-link.twitter { background: #1DA1F2; }
+        
+        /* الفوتر */
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 30px 20px;
             color: #64748b;
-            font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 40px;
+            font-size: 0.95rem;
+            border-top: 2px solid #e2e8f0;
+            background: white;
+        }
+        .footer strong {
+            color: var(--primary-dark);
+        }
+        
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .header p { font-size: 1.1rem; }
+            .about h2 { font-size: 1.5rem; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
+    <!-- الهيدر -->
     <div class="header">
         <h1>🚀 استوديو AppNest</h1>
-        <p>تطبيقات إسلامية مفيدة | تطوير: محمد مطر</p>
+        <p>تطبيقات إسلامية مفيدة</p>
+        <p class="subtitle">تطوير: محمد مطر</p>
     </div>
     
     <div class="container">
+        <!-- قسم عن الاستوديو -->
+        <div class="about">
+            <h2>✨ مرحباً بك في استوديو AppNest</h2>
+            <p>نطور تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري، لمساعدتك في عبادتك اليومية وتقريبك من الله.</p>
+        </div>
+        
+        <!-- بطاقة التطبيق -->
         <div class="apps">
-            <!-- بطاقة تطبيق التسبيح -->
             <div class="app-card">
                 <h3>📿 تطبيق Tasbih App</h3>
                 <p>تطبيق إسلامي شامل لمساعدتك على الذكر والدعاء وتنظيم عبادتك اليومية بتصميم عصري وسلس.</p>
+                
+                <!-- ⚠️ صورة التطبيق - ستظهر تلقائياً عندما ترفع صورة باسم tasbih-screenshot.png إلى المستودع -->
+                <!-- إذا لم ترفع صورة بعد، هذا السطر لن يسبب أي مشكلة وسيختفي تلقائياً -->
+                <img src="tasbih-screenshot.png" alt="واجهة تطبيق Tasbih App" class="app-image" onerror="this.style.display='none'">
+                
                 <ul class="features">
                     <li>عداد تسبيح ذكي وسهل الاستخدام</li>
                     <li>مجموعة من 100 دعاء للأمنيات</li>
@@ -97,17 +333,38 @@
                     <li>خلفيات إسلامية و 5 تصاميم للمسبحة مع 8 ألوان</li>
                     <li>نظام إنجازات لتحفيزك على الاستمرار</li>
                 </ul>
-                <a href="#" class="btn">تحميل التطبيق (قريباً)</a>
+                
+                <div class="btn-group">
+                    <!-- ⚠️ غيّر # إلى رابط التحميل الفعلي عند توفره -->
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        تحميل التطبيق
+                    </a>
+                </div>
             </div>
-
-            <!-- يمكنك نسخ ولصق div الخاص بـ app-card لإضافة تطبيقات مستقبلية هنا -->
-            
+        </div>
+        
+        <!-- قسم التواصل -->
+        <div class="contact-section">
+            <h2>📬 تواصل معنا</h2>
+            <p>نسعد بتواصلك معنا للاستفسارات والاقتراحات</p>
+            <div class="social-links">
+                <!-- رابط حسابك على GitHub -->
+                <a href="https://github.com/matar804-lgtm" class="social-link github" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <!-- البريد الإلكتروني -->
+                <a href="mailto:mohammed.matar@appnest.studio" class="social-link email" title="البريد الإلكتروني">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
     </div>
-
+    
+    <!-- الفوتر -->
     <div class="footer">
-        <p>© 2026 استوديو AppNest. جميع الحقوق محفوظة.</p>
-        <p>تواصل معنا: your.email@appnest.studio</p>
+        <p>© 2026 <strong>استوديو AppNest</strong>. جميع الحقوق محفوظة.</p>
+        <p>📧 mohammed.matar@appnest.studio</p>
     </div>
 </body>
 </html>
