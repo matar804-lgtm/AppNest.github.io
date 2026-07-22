@@ -363,3 +363,90 @@
         
         <!-- قسم التواصل مع نموذج Formspree المدمج -->
         <div id="contact" class="contact-section fade-in-up">
+            <h2>📬 تواصل معنا وتابع جديدنا</h2>
+            <p>نسعد بتواصلك معنا للاستفسارات والاقتراحات</p>
+            
+            <!-- ⚠️ هام جداً: استبدل YOUR_FORM_ID بالرابط الكامل الذي نسخته من Formspree -->
+            <!-- مثال: https://formspree.io/f/xnqkvlza -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 500px; margin: 0 auto; text-align: right;">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">الاسم:</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">بريدك الإلكتروني:</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">الرسالة:</label>
+                    <textarea name="message" rows="4" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; font-size: 1rem; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-family: 'Cairo', sans-serif;">
+                    <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                </button>
+            </form>
+
+            <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <p style="font-size: 0.9rem; margin-bottom: 10px; color: var(--text);">أو راسلنا مباشرة عبر:</p>
+                <a href="mailto:appnest.studio01@gmail.com" class="social-link email" title="البريد الإلكتروني" style="display: inline-flex;">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2026 <strong>استوديو AppNest</strong>. جميع الحقوق محفوظة.</p>
+        <p>📧 appnest.studio01@gmail.com</p>
+    </div>
+
+    <button class="back-to-top" id="backToTop" title="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 1. Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        
+        function updateIcon(theme) {
+            if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+            else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+        }
+        updateIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        // 2. Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // 3. Back to Top Logic
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // 4. PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+                    .catch(err => console.log('❌ Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
