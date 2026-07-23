@@ -4,19 +4,24 @@
     <!-- أساسي لـ GitHub Pages و PWA -->
     <base href="/matar804-lgtm.github.io/">
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - الإحصاءات مفعلة -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5K14PRVXXK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-5K14PRVXXK');
+      
+      // دالة مخصصة لتتبع النقرات على الأزرار (Events Tracking)
+      function trackEvent(eventName, params) {
+          gtag('event', eventName, params);
+      }
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>استوديو AppNest | محمد مطر - تطبيقات إسلامية عصرية</title>
-    <meta name="description" content="استوديو AppNest لتطوير التطبيقات الإسلامية المفيدة. تسبيح، رزنامة، خلفيات، ورفيق السفر المسلم.">
+    <meta name="description" content="استوديو AppNest لتطوير التطبيقات الإسلامية المفيدة. تسبيح، رزنامة، خلفيات، ورفيق الطريق الذكي للسيارة.">
     
     <!-- وسوم PWA والتثبيت -->
     <meta name="theme-color" content="#10b981">
@@ -28,7 +33,7 @@
 
     <!-- وسوم المشاركة الاجتماعية (Open Graph) -->
     <meta property="og:title" content="استوديو AppNest | تطبيقات إسلامية عصرية">
-    <meta property="og:description" content="اكتشف تطبيقاتنا: تسبيح، رزنامة إسلامية، خلفيات، ورفيق السفر المسلم. تطوير محمد مطر.">
+    <meta property="og:description" content="اكتشف تطبيقاتنا: تسبيح، رزنامة إسلامية، خلفيات، ورفيق الطريق الذكي للسيارة. تطوير محمد مطر.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matar804-lgtm.github.io/">
     <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2884/2884684.png">
@@ -134,36 +139,6 @@
         .about p { font-size: 1.1rem; color: #64748b; }
         [data-theme="dark"] .about p { color: #94a3b8; }
 
-        .video-section {
-            max-width: 800px; margin: 0 auto 60px;
-            background: var(--card-bg); padding: 40px 20px; border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--border-color);
-            text-align: center; position: relative; overflow: hidden;
-        }
-        .video-section::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        .video-section h2 { color: var(--primary-dark); margin-bottom: 25px; font-size: 1.8rem; }
-        [data-theme="dark"] .video-section h2 { color: var(--primary); }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
         .apps { 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px; margin-bottom: 50px;
@@ -218,9 +193,9 @@
         .btn { 
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 700;
-            transition: all 0.3s ease; font-size: 1rem; flex: 1; min-width: 150px;
+            transition: all 0.3s ease; font-size: 1rem; flex: 1; min-width: 150px; cursor: pointer;
         }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); border: none; cursor: pointer;}
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); border: none; }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); }
         .btn-secondary { background: transparent; border: 2px dashed var(--accent); color: var(--accent); cursor: default; }
         .btn-secondary:hover { background: rgba(245, 158, 11, 0.1); }
@@ -297,7 +272,7 @@
             <div class="nav-logo"><i class="fas fa-cube"></i> استوديو AppNest</div>
             <div class="nav-links">
                 <a href="#about">عن الاستوديو</a>
-                <a href="#video">الفيديو</a>
+                <!-- تم حذف رابط الفيديو من القائمة -->
                 <a href="#apps">التطبيقات</a>
                 <a href="#contact">تواصل معنا</a>
             </div>
@@ -309,27 +284,17 @@
 
     <div class="header">
         <h1>🚀 استوديو AppNest</h1>
-        <p>تطبيقات إسلامية مفيدة بتصميم عصري</p>
+        <p>تطبيقات إسلامية مفيدة بتصميم عصري وتجربة مستخدم استثنائية</p>
         <p class="subtitle">تطوير: محمد مطر</p>
     </div>
     
     <div class="container">
         <div id="about" class="about fade-in-up">
             <h2>✨ مرحباً بك في استوديو AppNest</h2>
-            <p>نطور تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري، لمساعدتك في عبادتك اليومية وتقريبك من الله بتجربة مستخدم سلسة وممتعة.</p>
+            <p>نطور تطبيقات إسلامية تجمع بين الفائدة والتصميم العصري، لمساعدتك في عبادتك اليومية وتقريبك من الله بتجربة مستخدم سلسة، خفيفة، وممتعة.</p>
         </div>
 
-        <div id="video" class="video-section fade-in-up">
-            <h2>🎬 الفيديو التعريفي لتطبيقاتنا</h2>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/UNDKagUowpw?rel=0&modestbranding=1" 
-                    title="فيديو تعريفي لاستوديو AppNest" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
+        <!-- تم حذف قسم الفيديو بالكامل من هنا -->
         
         <div id="apps" class="apps">
             
@@ -350,7 +315,7 @@
                     <li>نظام إنجازات لتحفيزك على الاستمرار</li>
                 </ul>
                 <div class="btn-group">
-                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary">
+                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary" onclick="trackEvent('github_click', {app: 'tasbih'})">
                         <i class="fab fa-github"></i> زيارة المستودع
                     </a>
                     <a href="#" class="btn btn-secondary">
@@ -366,20 +331,17 @@
                 <h3>رزنامة AppNest</h3>
                 <p>تقويمك الإسلامي الذكي الذي يجمع بين الأصالة والمعاصرة. رفيقك اليومي لمعرفة المناسبات الإسلامية.</p>
                 
-                <img src="calendar1.png" alt="رزنامة AppNest - صورة 1" class="app-image" loading="lazy" onerror="this.style.display='none'">
-                <img src="calendar2.png" alt="رزنامة AppNest - صورة 2" class="app-image" loading="lazy" onerror="this.style.display='none'">
-                <img src="calendar3.png" alt="رزنامة AppNest - صورة 3" class="app-image" loading="lazy" onerror="this.style.display='none'">
+                <img src="calendar1.png" alt="رزنامة AppNest" class="app-image" loading="lazy" onerror="this.style.display='none'">
                 
                 <ul class="features">
                     <li>عرض متزامن للتقويم الهجري والميلادي بلمسة عصرية</li>
                     <li>تنبيهات تلقائية لجميع المناسبات الإسلامية</li>
                     <li>تمييز الأشهر الحرم والأيام الفاضلة بصرياً</li>
                     <li>واجهة هادئة وأنيقة تدعم الوضع الليلي</li>
-                    <li>تجربة موحدة على الويب والموبايل</li>
                     <li>إضافة ملاحظاتك الشخصية وربطها بالمناسبات</li>
                 </ul>
                 <div class="btn-group" style="justify-content: center;">
-                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary">
+                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary" onclick="trackEvent('github_click', {app: 'calendar'})">
                         <i class="fab fa-github"></i> متابعة التطوير
                     </a>
                     <a href="#" class="btn btn-secondary">
@@ -395,8 +357,7 @@
                 <h3>خلفيات إسلامية رائعة</h3>
                 <p>مجموعة مختارة من الخلفيات الإسلامية العصرية والهادئة لهاتفك وكمبيوترك، تجمع بين الجمال والروحانية.</p>
                 
-                <img src="wallpaper1.png" alt="خلفيات إسلامية - صورة 1" class="app-image" loading="lazy" onerror="this.style.display='none'">
-                <img src="wallpaper2.png" alt="خلفيات إسلامية - صورة 2" class="app-image" loading="lazy" onerror="this.style.display='none'">
+                <img src="wallpaper1.png" alt="خلفيات إسلامية" class="app-image" loading="lazy" onerror="this.style.display='none'">
                 
                 <ul class="features">
                     <li>مئات الخلفيات الإسلامية عالية الجودة</li>
@@ -404,10 +365,9 @@
                     <li>متاحة للهاتف (Android & iOS) والكمبيوتر</li>
                     <li>تصنيفات متنوعة: آيات، أدعية، مساجد، طبيعة</li>
                     <li>إمكانية التحميل والمشاركة بسهولة</li>
-                    <li>تحديثات دورية بخلفيات جديدة</li>
                 </ul>
                 <div class="btn-group" style="justify-content: center;">
-                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary">
+                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary" onclick="trackEvent('github_click', {app: 'wallpaper'})">
                         <i class="fab fa-github"></i> استكشاف المشروع
                     </a>
                     <a href="#" class="btn btn-secondary">
@@ -416,26 +376,25 @@
                 </div>
             </div>
 
-            <!-- التطبيق 4: رفيق السفر المسلم -->
+            <!-- التطبيق 4: رفيقك المسلي بالسيارة (تم الاستبدال والتحسين) -->
             <div class="app-card coming-soon fade-in-up">
                 <span class="coming-soon-badge">قريباً</span>
-                <span class="app-icon">✈️</span>
-                <h3>رفيق السفر المسلم</h3>
-                <p>دليلك الشامل للسفر، يجمع بين مواقيت الصلاة، اتجاه القبلة، والأذكار الخاصة بالسفر في تطبيق واحد.</p>
+                <span class="app-icon">🚗</span>
+                <h3>رفيقك المسلي بالسيارة</h3>
+                <p>تطبيق ذكي وخفيف مصمم خصيصاً لشاشات السيارات ورحلات الطريق، يجمع بين القرآن، القصص، والأذكار بتسلسل ذكي وتجربة مستخدم آمنة.</p>
                 
-                <img src="travel1.png" alt="رفيق السفر المسلم - صورة 1" class="app-image" loading="lazy" onerror="this.style.display='none'">
-                <img src="travel2.png" alt="رفيق السفر المسلم - صورة 2" class="app-image" loading="lazy" onerror="this.style.display='none'">
+                <img src="car_companion1.png" alt="رفيق الطريق - واجهة السيارة" class="app-image" loading="lazy" onerror="this.style.display='none'">
                 
                 <ul class="features">
-                    <li>مواقيت الصلاة الدقيقة في أي مكان في العالم</li>
-                    <li>بوصلة القبلة الذكية مع وضع السفر</li>
-                    <li>أذكار السفر والترحال مع التنبيهات</li>
-                    <li>دليل المساجد القريبة والمراكز الإسلامية</li>
-                    <li>وضع الطيران الذكي (Offline Mode)</li>
-                    <li>نصائح وإرشادات للسفر الإسلامي</li>
+                    <li>تشغيل تلقائي ذكي عند اتصال السيارة (Bluetooth / Android Auto)</li>
+                    <li>تسلسل أدعية تلقائي (ركوب السيارة → السفر → الصباح/المساء)</li>
+                    <li>استراتيجية "Freemium Offline" (محتوى أساسي متاح بدون إنترنت)</li>
+                    <li>وضع التركيز (Focus Mode) لإخفاء المشتتات أثناء القيادة السريعة</li>
+                    <li>استهلاك منخفض جداً للذاكرة (Low RAM) والبطارية لضمان الاستقرار</li>
+                    <li>إحصائيات أسبوعية للإنجازات الروحية (ساعات الاستماع والأذكار)</li>
                 </ul>
                 <div class="btn-group" style="justify-content: center;">
-                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary">
+                    <a href="https://github.com/matar804-lgtm" target="_blank" class="btn btn-primary" onclick="trackEvent('github_click', {app: 'car_companion'})">
                         <i class="fab fa-github"></i> متابعة التطوير
                     </a>
                     <a href="#" class="btn btn-secondary">
@@ -451,8 +410,7 @@
             <h2>📬 تواصل معنا وتابع جديدنا</h2>
             <p>نسعد بتواصلك معنا للاستفسارات والاقتراحات</p>
             
-            <!-- تم دمج رابط Formspree الخاص بك هنا مباشرة -->
-            <form action="https://formspree.io/f/mrenaaoy" method="POST" style="max-width: 500px; margin: 0 auto; text-align: right;">
+            <form action="https://formspree.io/f/mrenaaoy" method="POST" style="max-width: 500px; margin: 0 auto; text-align: right;" onsubmit="trackEvent('form_submit', {category: 'contact'})">
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">الاسم:</label>
                     <input type="text" name="name" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; font-size: 1rem; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'">
@@ -472,7 +430,7 @@
 
             <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
                 <p style="font-size: 0.9rem; margin-bottom: 10px; color: var(--text);">أو راسلنا مباشرة عبر:</p>
-                <a href="mailto:appnest.studio01@gmail.com" class="social-link email" title="البريد الإلكتروني" style="display: inline-flex;">
+                <a href="mailto:appnest.studio01@gmail.com" class="social-link email" title="البريد الإلكتروني" style="display: inline-flex;" onclick="trackEvent('email_click', {category: 'contact'})">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
